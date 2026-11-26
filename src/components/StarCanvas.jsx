@@ -117,9 +117,9 @@ export default function StarCanvas({ formation }) {
                 );
             } else {
                 const fontSize = Math.min(
-                    width * (mobile ? 0.11 : 0.085),
+                    width * (mobile ? 0.15 : 0.085),
                     height * 0.20,
-                    mobile ? 100 : 100
+                    mobile ? 110 : 100
                 );
 
                 points = generateTextPoints(
@@ -128,7 +128,7 @@ export default function StarCanvas({ formation }) {
                     height,
                     {
                         fontSize,
-                        gap: mobile ? 6 : 4,
+                        gap: mobile ? 5 : 4,
                     }
                 );
             }

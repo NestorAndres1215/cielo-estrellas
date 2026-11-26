@@ -2,17 +2,14 @@
 export function assignFormation(particles, points) {
     if (!points.length) return;
 
-    const shuffled = [...points];
-
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-
-        [shuffled[i], shuffled[j]] =
-            [shuffled[j], shuffled[i]];
-    }
-
     particles.forEach((particle, index) => {
-        const point = shuffled[index % shuffled.length];
+        // Distribuimos las partículas uniformemente
+        // por todos los puntos de la formación.
+        const pointIndex = Math.floor(
+            (index * points.length) / particles.length
+        );
+
+        const point = points[pointIndex];
 
         particle.setTarget(point.x, point.y);
     });
