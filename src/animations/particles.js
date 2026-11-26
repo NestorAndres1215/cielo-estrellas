@@ -69,14 +69,12 @@ export class Particle {
   }
 
   draw(ctx) {
-    ctx.save();
-
     ctx.globalAlpha = this.currentAlpha;
-
-    ctx.shadowBlur = 14;
-    ctx.shadowColor = this.color;
-
     ctx.fillStyle = this.color;
+
+    // Reducimos el coste del efecto de brillo.
+    ctx.shadowBlur = 5;
+    ctx.shadowColor = this.color;
 
     ctx.beginPath();
 
@@ -90,6 +88,8 @@ export class Particle {
 
     ctx.fill();
 
-    ctx.restore();
+    // Restauramos los valores para el siguiente dibujo.
+    ctx.globalAlpha = 1;
+    ctx.shadowBlur = 0;
   }
 }
